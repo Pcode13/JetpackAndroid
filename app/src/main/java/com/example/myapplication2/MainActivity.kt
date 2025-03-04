@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication2.ui.theme.MyApplication2Theme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -29,9 +30,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+
 import androidx.compose.ui.semantics.Role.Companion.Image
 
 data class Restaurant(
@@ -67,9 +78,37 @@ val restaurants = listOf(
         name = "Pizza Pizza",
         tagLine = "Italian Pizza",
         imageUrl = R.drawable.res_img5
-
-    )
-
+    ),
+    Restaurant(
+        name = "Pizza Pizza",
+        tagLine = "Italian Pizza",
+        imageUrl = R.drawable.res_img6
+    ),
+    Restaurant(
+        name = "Pizza Pizza",
+        tagLine = "Italian Pizza",
+        imageUrl = R.drawable.res_img7
+    ),
+    Restaurant(
+        name = "Pizza Pizza",
+        tagLine = "Italian Pizza",
+        imageUrl = R.drawable.res_img8
+    ),
+    Restaurant(
+        name = "Pizza Pizza",
+        tagLine = "Italian Pizza",
+        imageUrl = R.drawable.res_img9
+    ),
+    Restaurant(
+        name = "Pizza Pizza",
+        tagLine = "Italian Pizza",
+        imageUrl = R.drawable.res_img10
+    ),
+    Restaurant(
+        name = "Pizza Pizza",
+        tagLine = "Italian Pizza",
+        imageUrl = R.drawable.res_img11
+    ),
 )
 
 //val HorizontalRestaurantList = listOf(
@@ -106,12 +145,39 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RestaurantList(restaurants)
+                    RestaurantApp()
+//                    RestaurantList(restaurants)
 //                    HorizontalRestaurantList(HorizontalRestaurantList)
                 }
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun RestaurantApp() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Restaurant App",
+                    color = MaterialTheme.colorScheme.primary,
+                    ) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                )
+            )
+        },
+
+        floatingActionButton = {
+            FloatingActionButton(onClick = { /*TODO*/ }) {
+                Icon(Icons.Filled.Add, contentDescription = null)
+            }
+        }
+        ) { contentPadding ->
+        RestaurantList(contentPadding, restaurants)
+    }
+
 }
 
 
@@ -126,8 +192,8 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun RestaurantList(restaurants: List<Restaurant>) {
-    Column(verticalArrangement = Arrangement.SpaceEvenly) {
+fun RestaurantList( contentPadding: PaddingValues,restaurants: List<Restaurant>) {
+    Column(modifier = Modifier.padding(contentPadding)) {
         for (restaurant in restaurants) {
             RestaurantCard(restaurant = restaurant)
         }
@@ -150,15 +216,18 @@ fun RestaurantCard(restaurant: Restaurant) {
             Image(
                 painter = painterResource(id = restaurant.imageUrl),
                 contentDescription = "Restaurant Image",
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier
+                    .size(100.dp)
                     .clip(CircleShape)
-                    .border(width = 2.dp,
+                    .border(
+                        width = 2.dp,
                         color = Color.Green,
-                        shape = CircleShape),
-                contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                        shape = CircleShape
+                    ),
+                contentScale = ContentScale.Crop
 
-                )
-            Spacer( modifier = Modifier.width(8.dp))
+            )
+            Spacer(modifier = Modifier.width(8.dp))
 
             Column(verticalArrangement = Arrangement.Center) {
                 Text(
@@ -208,7 +277,7 @@ fun RestaurantCardPreview() {
 @Composable
 fun RestaurantListPerview() {
     MyApplication2Theme {
-        RestaurantList(restaurants)
+       RestaurantApp()
     }
 }
 
