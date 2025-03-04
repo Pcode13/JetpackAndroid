@@ -29,20 +29,27 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.magnifier
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.semantics.Role.Companion.Image
 
 data class Restaurant(
@@ -52,64 +59,66 @@ data class Restaurant(
 )
 
 val restaurants = listOf(
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img1
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img2
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img3
-    ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img1
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img2
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img3
+        ),
 
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img4
-    ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img4
+        ),
 
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img5
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img6
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img7
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img8
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img9
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img10
-    ),
-    Restaurant(
-        name = "Pizza Pizza",
-        tagLine = "Italian Pizza",
-        imageUrl = R.drawable.res_img11
-    ),
-)
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img5
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img6
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img7
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img8
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img9
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img10
+        ),
+        Restaurant(
+            name = "Pizza Pizza",
+            tagLine = "Italian Pizza",
+            imageUrl = R.drawable.res_img11
+        ),
+
+        )
+
 
 //val HorizontalRestaurantList = listOf(
 //    Restaurant(
@@ -157,6 +166,51 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RestaurantApp() {
+
+    val restaurantsNewList = remember {
+        mutableStateListOf(
+            Restaurant(
+                "Belgian Waffles",
+                "The best in town!", R.drawable.res_img1
+            ),
+            Restaurant(
+                "Stomachful",
+                "Never leave hungry", R.drawable.res_img2
+            ),
+            Restaurant(
+                "Big Belly Noodles",
+                "Delicious noodles", R.drawable.res_img3
+            ),
+            Restaurant(
+                "Cakery",
+                "Cakes for every occasion", R.drawable.res_img4
+            ),
+            Restaurant(
+                "Pan Asia",
+                "The best Asian food", R.drawable.res_img5
+            ),
+            Restaurant(
+                "House of Pancakes",
+                "Best for breakfast", R.drawable.res_img6
+            ),
+            Restaurant(
+                "Sizzling Steakhouse",
+                "Come for the sizzle", R.drawable.res_img7
+            ),
+            Restaurant(
+                "Something fishy",
+                "Everything from the sea", R.drawable.res_img8
+            ),
+            Restaurant(
+                "Pasta Ya Gotcha",
+                "Pastas and more", R.drawable.res_img9
+            ),
+            Restaurant(
+                "Healthy and Yummy",
+                "Can't believe it's healthy!", R.drawable.res_img10
+            ),
+        )
+    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -168,14 +222,13 @@ fun RestaurantApp() {
                 )
             )
         },
-
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(onClick = { restaurantsNewList.add(restaurantsNewList.random()) }) {
                 Icon(Icons.Filled.Add, contentDescription = null)
             }
         }
         ) { contentPadding ->
-        RestaurantList(contentPadding, restaurants)
+        RestaurantList(contentPadding, restaurantsNewList)
     }
 
 }
@@ -193,23 +246,28 @@ fun RestaurantApp() {
 
 @Composable
 fun RestaurantList( contentPadding: PaddingValues,restaurants: List<Restaurant>) {
-    Column(modifier = Modifier.padding(contentPadding)) {
-        for (restaurant in restaurants) {
-            RestaurantCard(restaurant = restaurant)
-        }
+    Column(modifier = Modifier.padding(contentPadding)
+        .verticalScroll(rememberScrollState()),
+    ) {
+       restaurants.forEach {
+           restaurant -> RestaurantCard(restaurant = restaurant)
+       }
     }
 }
 
 @Composable
 fun RestaurantCard(restaurant: Restaurant) {
-    Surface(
-        shape = MaterialTheme.shapes.medium,
-        shadowElevation = 4.dp,
-        color = Color.White,
-        modifier = Modifier.fillMaxWidth()
-//        modifier = Modifier.height(80.dp)
-
-    ) {
+    Card (
+        modifier = Modifier.fillMaxWidth(),
+                shape = CutCornerShape(10.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 10.dp
+        ),
+        colors = CardDefaults.cardColors(
+            Color.White
+        )
+    )
+{
 
 
         Row(Modifier.padding(8.dp)) {
