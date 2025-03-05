@@ -63,73 +63,73 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
 
-data class Restaurant(
-    val name: String,
-    val tagLine: String,
-    val imageUrl: Int,
-)
-
-val restaurants = listOf(
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img1
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img2
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img3
-        ),
-
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img4
-        ),
-
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img5
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img6
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img7
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img8
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img9
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img10
-        ),
-        Restaurant(
-            name = "Pizza Pizza",
-            tagLine = "Italian Pizza",
-            imageUrl = R.drawable.res_img11
-        ),
-
-        )
-
+//data class Restaurant(
+//    val name: String,
+//    val tagLine: String,
+//    val imageUrl: Int,
+//)
+//
+//val restaurants = listOf(
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img1
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img2
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img3
+//        ),
+//
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img4
+//        ),
+//
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img5
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img6
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img7
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img8
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img9
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img10
+//        ),
+//        Restaurant(
+//            name = "Pizza Pizza",
+//            tagLine = "Italian Pizza",
+//            imageUrl = R.drawable.res_img11
+//        ),
+//
+//        )
+//
 
 
 class MainActivity : ComponentActivity() {
@@ -143,7 +143,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RestaurantApp()
+
+//                    RestaurantApp()
 //                    RestaurantList(restaurants)
 //                    HorizontalRestaurantList(HorizontalRestaurantList)
                 }
@@ -152,156 +153,156 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun RestaurantApp() {
-
-    val restaurantsNewList = remember {
-        mutableStateListOf(
-            Restaurant(
-                "Belgian Waffles",
-                "The best in town!", R.drawable.res_img1
-            ),
-            Restaurant(
-                "Stomachful",
-                "Never leave hungry", R.drawable.res_img2
-            ),
-            Restaurant(
-                "Big Belly Noodles",
-                "Delicious noodles", R.drawable.res_img3
-            ),
-            Restaurant(
-                "Cakery",
-                "Cakes for every occasion", R.drawable.res_img4
-            ),
-            Restaurant(
-                "Pan Asia",
-                "The best Asian food", R.drawable.res_img5
-            ),
-            Restaurant(
-                "House of Pancakes",
-                "Best for breakfast", R.drawable.res_img6
-            ),
-            Restaurant(
-                "Sizzling Steakhouse",
-                "Come for the sizzle", R.drawable.res_img7
-            ),
-            Restaurant(
-                "Something fishy",
-                "Everything from the sea", R.drawable.res_img8
-            ),
-            Restaurant(
-                "Pasta Ya Gotcha",
-                "Pastas and more", R.drawable.res_img9
-            ),
-            Restaurant(
-                "Healthy and Yummy",
-                "Can't believe it's healthy!", R.drawable.res_img10
-            ),
-        )
-    }
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Restaurant App",
-                    color = MaterialTheme.colorScheme.primary,
-                    ) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                )
-            )
-        },
-//        floatingActionButton = {
-//            FloatingActionButton(onClick = { restaurantsNewList.add(restaurantsNewList.random()) }) {
-//                Icon(Icons.Filled.Add, contentDescription = null)
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun RestaurantApp() {
+//
+//    val restaurantsNewList = remember {
+//        mutableStateListOf(
+//            Restaurant(
+//                "Belgian Waffles",
+//                "The best in town!", R.drawable.res_img1
+//            ),
+//            Restaurant(
+//                "Stomachful",
+//                "Never leave hungry", R.drawable.res_img2
+//            ),
+//            Restaurant(
+//                "Big Belly Noodles",
+//                "Delicious noodles", R.drawable.res_img3
+//            ),
+//            Restaurant(
+//                "Cakery",
+//                "Cakes for every occasion", R.drawable.res_img4
+//            ),
+//            Restaurant(
+//                "Pan Asia",
+//                "The best Asian food", R.drawable.res_img5
+//            ),
+//            Restaurant(
+//                "House of Pancakes",
+//                "Best for breakfast", R.drawable.res_img6
+//            ),
+//            Restaurant(
+//                "Sizzling Steakhouse",
+//                "Come for the sizzle", R.drawable.res_img7
+//            ),
+//            Restaurant(
+//                "Something fishy",
+//                "Everything from the sea", R.drawable.res_img8
+//            ),
+//            Restaurant(
+//                "Pasta Ya Gotcha",
+//                "Pastas and more", R.drawable.res_img9
+//            ),
+//            Restaurant(
+//                "Healthy and Yummy",
+//                "Can't believe it's healthy!", R.drawable.res_img10
+//            ),
+//        )
+//    }
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text(text = "Restaurant App",
+//                    color = MaterialTheme.colorScheme.primary,
+//                    ) },
+//                colors = TopAppBarDefaults.mediumTopAppBarColors(
+//                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+//                )
+//            )
+//        },
+////        floatingActionButton = {
+////            FloatingActionButton(onClick = { restaurantsNewList.add(restaurantsNewList.random()) }) {
+////                Icon(Icons.Filled.Add, contentDescription = null)
+////            }
+////        }
+//
+//        ) { contentPadding -> SliderMenuList(contentPadding, restaurantsNewList)
+////        DropdownMenuList(contentPadding,restaurantsNewList)
+//
+//
+////        CounterApp(contentPadding)
+////        TextInputApp(contentPadding)
+////        RestaurantProfile(contentPadding)
+////        RestaurantList(contentPadding, restaurantsNewList)
+//    }
+//
+//}
+//
+//@Composable
+//fun SliderMenuList(
+//    contentPadding: PaddingValues,
+//    restaurantsNewList:List<Restaurant>,
+//) {
+//    val sliderValue = remember { mutableStateOf(0f) }
+//    Card(
+//        modifier = Modifier
+//            .padding(contentPadding)
+//            .fillMaxWidth(),
+//        shape = RectangleShape,
+//        colors = CardDefaults.cardColors(
+//            MaterialTheme.colorScheme.background
+//        )
+//
+//    ) {
+//        Column(
+//            modifier = Modifier.fillMaxWidth(),
+//
+//        ){
+//            Box(
+//                modifier = Modifier
+//                    .padding(32.dp)
+//                    .fillMaxWidth()
+//                    .wrapContentHeight()
+//
+//            ){
+//                Image(
+//                    painter = painterResource(
+//                        restaurantsNewList[sliderValue.value.toInt()].imageUrl
+//                    ),
+//                    contentDescription = "restaurant",
+//                    modifier = Modifier
+//                        .align(Alignment.Center)
+//                        .size(350.dp)
+//                        .clip(CircleShape),
+//                    contentScale = ContentScale.Crop
+//                )
 //            }
+//            Box(
+//                modifier = Modifier
+//                    .padding(32.dp)
+//                    .fillMaxWidth()
+//                    .wrapContentHeight()
+//            ){
+//                Text(
+//                    restaurantsNewList[sliderValue.value.toInt()].name,
+//                    textAlign = TextAlign.Center,
+//                    style = MaterialTheme.typography.titleLarge,
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(top = 4.dp, bottom = 16.dp))
+//
+//            }
+//            Box(
+//                modifier = Modifier
+//                    .fillMaxSize()
+//                    .wrapContentSize(Alignment.BottomCenter)
+//            ){
+//                Slider(
+//                    value = sliderValue.value,
+//                    onValueChange = { newValue ->
+//                        sliderValue.value = newValue
+//                    },
+//                    valueRange = 0f..10f,
+//                    steps = 10
+//                )
+//            }
+//
 //        }
-
-        ) { contentPadding -> SliderMenuList(contentPadding, restaurantsNewList)
-//        DropdownMenuList(contentPadding,restaurantsNewList)
-
-
-//        CounterApp(contentPadding)
-//        TextInputApp(contentPadding)
-//        RestaurantProfile(contentPadding)
-//        RestaurantList(contentPadding, restaurantsNewList)
-    }
-
-}
-
-@Composable
-fun SliderMenuList(
-    contentPadding: PaddingValues,
-    restaurantsNewList:List<Restaurant>,
-) {
-    val sliderValue = remember { mutableStateOf(0f) }
-    Card(
-        modifier = Modifier
-            .padding(contentPadding)
-            .fillMaxWidth(),
-        shape = RectangleShape,
-        colors = CardDefaults.cardColors(
-            MaterialTheme.colorScheme.background
-        )
-
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-
-        ){
-            Box(
-                modifier = Modifier
-                    .padding(32.dp)
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-
-            ){
-                Image(
-                    painter = painterResource(
-                        restaurantsNewList[sliderValue.value.toInt()].imageUrl
-                    ),
-                    contentDescription = "restaurant",
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .size(350.dp)
-                        .clip(CircleShape),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .padding(32.dp)
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-            ){
-                Text(
-                    restaurantsNewList[sliderValue.value.toInt()].name,
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 4.dp, bottom = 16.dp))
-
-            }
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .wrapContentSize(Alignment.BottomCenter)
-            ){
-                Slider(
-                    value = sliderValue.value,
-                    onValueChange = { newValue ->
-                        sliderValue.value = newValue
-                    },
-                    valueRange = 0f..10f,
-                    steps = 10
-                )
-            }
-
-        }
-
-    }
-}
+//
+//    }
+//}
 
 //@Composable
 //fun DropdownMenuList(
@@ -613,6 +614,6 @@ fun SliderMenuList(
     @Composable
     fun PreviewRestaurantApp() {
         MyApplication2Theme {
-            RestaurantApp()
+//            RestaurantApp()
         }
     }
