@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication2.ui.theme.MyApplication2Theme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -40,11 +41,15 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -227,10 +232,49 @@ fun RestaurantApp() {
                 Icon(Icons.Filled.Add, contentDescription = null)
             }
         }
-        ) { contentPadding ->
-        RestaurantList(contentPadding, restaurantsNewList)
+        ) { contentPadding ->RestaurantProfile(contentPadding)
+//        RestaurantList(contentPadding, restaurantsNewList)
     }
 
+}
+
+@Composable
+fun RestaurantProfile(contentPadding: PaddingValues) {
+    Card(
+        modifier = Modifier
+            .padding(contentPadding)
+            .fillMaxWidth(),
+        shape = RectangleShape,
+        colors = CardDefaults.cardColors(
+            MaterialTheme.colorScheme.background
+        )
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier.padding(16.dp).align(Alignment.Center)
+            ) {
+                var name by remember { mutableStateOf("") }
+                var tagLine by remember { mutableStateOf("") }
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    if (name.isNotEmpty()) {
+                        Text(
+                            text = name,
+                            modifier = Modifier
+                                .padding(bottom = 8.dp)
+                                .align(Alignment.Center),
+                            style = MaterialTheme.typography.titleLarge,
+                        )
+                    }
+                }
+                OutlinedTextField(
+                    value =name,
+                    onValueChange = { name = it },
+                    label = { Text("Update restaurant name") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+        }
+    }
 }
 
 
