@@ -1,8 +1,6 @@
 package com.example.myapplication2
 
-import android.media.Image
 import android.os.Bundle
-import android.provider.MediaStore.Images
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -29,6 +27,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -38,6 +38,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -49,13 +52,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.semantics.Role.Companion.Image
 
 data class Restaurant(
     val name: String,
@@ -227,15 +230,93 @@ fun RestaurantApp() {
                 )
             )
         },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { restaurantsNewList.add(restaurantsNewList.random()) }) {
-                Icon(Icons.Filled.Add, contentDescription = null)
-            }
-        }
-        ) { contentPadding ->RestaurantProfile(contentPadding)
+//        floatingActionButton = {
+//            FloatingActionButton(onClick = { restaurantsNewList.add(restaurantsNewList.random()) }) {
+//                Icon(Icons.Filled.Add, contentDescription = null)
+//            }
+//        }
+
+        ) { contentPadding ->CounterApp(contentPadding)
+//        RestaurantProfile(contentPadding)
 //        RestaurantList(contentPadding, restaurantsNewList)
     }
 
+}
+
+@Composable
+fun CounterApp(contentPadding: PaddingValues) {
+    Card(
+        modifier = Modifier
+            .padding(contentPadding)
+            .fillMaxWidth(),
+        shape = RectangleShape,
+        colors = CardDefaults.cardColors(
+            MaterialTheme.colorScheme.background
+    ) ){
+        var counter = rememberSaveable { mutableStateOf(0) }
+        Box(modifier = Modifier.fillMaxSize()){
+            Column(modifier = Modifier.wrapContentSize().align(Alignment.Center)) {
+                Box(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+                    Text(
+                        text = counter.value.toString(),
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+            }
+                Button(
+                    onClick = { counter.value = 0 },
+                    modifier = Modifier.padding(8.dp)
+
+
+                ) {
+                    Text("Reset")
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Button(
+                        onClick = { counter.value-- },
+                        modifier = Modifier
+                            .weight(1f) // The button will take up half of the available width
+                            .fillMaxWidth()
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Filled.KeyboardArrowDown, // Use your desired icon
+                                contentDescription = "Favorite Icon",
+                                modifier = Modifier.padding(end = 8.dp) // Add some padding between the icon and the text
+                            )
+                            Text("Decrement")
+                        }
+                    }
+                    Button(
+                        onClick = { counter.value++ },
+                        modifier = Modifier
+                            .weight(1f) // The button will take up half of the available width
+                            .fillMaxWidth()
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Filled.KeyboardArrowUp, // Use your desired icon
+                                contentDescription = "Favorite Icon",
+                                modifier = Modifier.padding(end = 8.dp) // Add some padding between the icon and the text
+                            )
+                            Text("Increment")
+                        }
+                    }
+
+
+
+
+
+
+                }
+            }
+        }
+
+    }
 }
 
 @Composable
